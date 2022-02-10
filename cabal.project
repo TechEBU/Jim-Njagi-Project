@@ -1,0 +1,76 @@
+packages:
+  servant/
+  servant-auth/servant-auth
+  servant-auth/servant-auth-client
+  servant-auth/servant-auth-docs
+  servant-auth/servant-auth-server
+  servant-auth/servant-auth-swagger
+
+  servant-client/
+  servant-client-core/
+  servant-http-streams/
+  servant-docs/
+  servant-foreign/
+  servant-server/
+  servant-swagger/
+  doc/tutorial/
+
+-- servant streaming
+packages:
+  servant-machines/
+  servant-conduit/
+  servant-pipes/
+
+-- servant GHCJS
+-- packages:
+--   servant-jsaddle/
+
+-- Cookbooks
+packages:
+  doc/cookbook/basic-auth
+  doc/cookbook/curl-mock
+  doc/cookbook/custom-errors
+  doc/cookbook/basic-streaming
+  doc/cookbook/db-postgres-pool
+  doc/cookbook/db-sqlite-simple
+  doc/cookbook/file-upload
+  doc/cookbook/generic
+  doc/cookbook/hoist-server-with-context
+  doc/cookbook/https
+  doc/cookbook/jwt-and-basic-auth
+  doc/cookbook/pagination
+  -- doc/cookbook/sentry
+  -- Commented out because servant-quickcheck currently doesn't build.
+  -- doc/cookbook/testing
+  doc/cookbook/uverb
+  doc/cookbook/structuring-apis
+  doc/cookbook/using-custom-monad
+  doc/cookbook/using-free-client
+  -- doc/cookbook/open-id-connect
+
+tests: True
+optimization: False
+-- reorder-goals: True
+
+constraints:
+  -- see https://github.com/haskell-infra/hackage-trustees/issues/119
+  foundation >=0.0.14,
+  memory <0.14.12 || >0.14.12
+
+constraints: base-compat ^>=0.11
+constraints: semigroups ^>=0.19
+
+-- allow-newer: sqlite-simple-0.4.16.0:semigroups
+-- allow-newer: direct-sqlite-2.3.24:semigroups
+
+-- needed for doctests
+write-ghc-environment-files: always
+
+-- https://github.com/chordify/haskell-servant-pagination/pull/12
+allow-newer: servant-pagination-2.2.2:servant
+allow-newer: servant-pagination-2.2.2:servant-server
+
+allow-newer: servant-js:servant
+
+-- ghc 9
+allow-newer: tdigest:base
